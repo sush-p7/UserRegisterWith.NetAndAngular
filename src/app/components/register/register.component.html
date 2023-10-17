@@ -1,0 +1,86 @@
+<html>
+<head>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div>
+  <div class="font-sans antialiased bg-grey-lightest">
+    <!-- Top Nav -->
+<!--    <div class="w-full bg-green fixed shadow z-1">-->
+<!--      <div class="container mx-auto">-->
+<!--        <div class="w-full flex justify-between items-center py-4 px-8">-->
+<!--          &lt;!&ndash; Brand &ndash;&gt;-->
+<!--          <div class="text-center text-white font-bold">Your Company</div>-->
+<!--          &lt;!&ndash; Navigation &ndash;&gt;-->
+<!--          <div class="items-center hidden sm:flex">-->
+<!--            <a href="#" class="text-white hover:text-green-lightest no-underline mx-2 px-2 py-2">Link 1</a>-->
+<!--            <a href="#" class="text-white hover:text-green-lightest no-underline mx-2 px-2 py-2">Link 2</a>-->
+<!--            <a href="#" class="bg-green-dark hover:bg-green-darker rounded-full text-white no-underline mx-2 px-4 py-2">Link 3</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+    <!-- Content -->
+    <div class="py-4 px-8 text-2xl text-center border-grey-lighter" [ngClass]="isAccountIsCreated?'text-green-800':'text-red-800'" >{{disPlayMes}}</div>
+    <div class="w-full bg-grey-lightest" style="padding-top: 4rem;">
+      <div class="container mx-auto py-8">
+        <form [formGroup]="registerform" (ngSubmit)="registerSubmited()">
+          <div class="w-5/6 lg:w-1/2 mx-auto bg-white rounded shadow">
+            <div class="py-4 px-8 text-black text-xl border-b border-grey-lighter">Register for a free account</div>
+            <div class="py-4 px-8">
+              <div class="flex mb-4">
+                <div class="w-1/2 mr-1">
+                  <label class="block text-grey-darker text-sm font-bold mb-2" for="first_name">First Name</label>
+                  <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="first_name" type="text" placeholder="Your first name" formControlName="first_name">
+                  <div class="FirstName text-sm text-red-800 p-1" *ngIf="first_name.errors?.['required'] && (first_name.touched || first_name.dirty)">First Name Is Requrierd</div>
+                  <div class="FirstName text-sm text-red-800 p-1" *ngIf="first_name.errors?.['minlength'] && (first_name.touched || first_name.dirty)">First Name Is Too Short</div>
+                  <div class="FirstName text-sm text-red-800 p-1" *ngIf="first_name.errors?.['pattern'] && (first_name.touched || first_name.dirty)">First Name Should Start with Letter</div>
+
+                </div>
+                <div class="w-1/2 ml-1">
+                  <label class="block text-grey-darker text-sm font-bold mb-2" for="last_name">Last Name</label>
+                  <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="last_name" type="text" placeholder="Your last name" formControlName="last_name">
+                  <div class="FirstName text-sm text-red-800 p-1" *ngIf="last_name.errors?.['required'] && (last_name.touched || last_name.dirty)">Last Name Is Requrierd</div>
+                  <div class="FirstName text-sm text-red-800 p-1" *ngIf="last_name.errors?.['minlength'] && (last_name.touched || last_name.dirty)">Last Name Is Too Short</div>
+                  <div class="FirstName text-sm text-red-800 p-1" *ngIf="last_name.errors?.['pattern'] && (last_name.touched || last_name.dirty)">Last Name Should Start with Letter</div>
+                </div>
+              </div>
+              <div class="mb-4">
+                <label class="block text-grey-darker text-sm font-bold mb-2" for="email">Email Address</label>
+                <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="email" type="email" placeholder="Your email address" formControlName="email">
+                <div class="FirstName text-sm text-red-800 p-1" *ngIf="email.errors?.['required'] && (email.touched || email.dirty)">Email Is Requrierd</div>
+                <div class="FirstName text-sm text-red-800 p-1" *ngIf="email.errors?.['email'] && (email.touched || email.dirty)">Wring E-mail Format</div>
+
+              </div>
+              <div class="mb-4">
+                <label class="block text-grey-darker text-sm font-bold mb-2" for="password">Password</label>
+                <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="password" type="password" placeholder="Your secure password" formControlName="password">
+                <p class="text-grey text-xs mt-1">At least 6 characters</p>
+                <div class="passwordError text-sm text-red-800 p-1" *ngIf="password.errors?.['required']&& (password.touched || password.dirty)">Password Is Requrierd</div>
+                <div class="passwordError text-sm text-red-800 p-1" *ngIf="password.errors?.['pattern']&& (password.touched || password.dirty)">Password Is Weak</div>
+                <div class="passwordError text-sm text-red-800 p-1" *ngIf="password.errors?.['minlength']&& (password.touched || password.dirty)">Password Is Short</div>
+
+              </div>
+              <div class="flex items-center justify-between mt-8">
+                <input type="submit" class="bg-blue-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"  value="Sign Up" [disabled]="registerform.invalid"/>
+<!--                  Sign Up-->
+<!--                </input>-->
+              </div>
+            </div>
+          </div>
+        </form>
+        <p class="text-center my-4">
+          <a href="#" class="text-grey-dark text-sm no-underline hover:text-grey-darker">I already have an account</a>
+        </p>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="w-full bg-grey-lighter py-8">
+      <div class="container mx-auto text-center px-8">
+        <p class="text-grey-dark mb-2 text-sm">This is a product of <span class="font-bold">E Commerce</span></p>
+      </div>
+    </footer>
+  </div>
+</div>
+</body>
+</html>
